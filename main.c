@@ -5,6 +5,10 @@
 
 int main(int argc, char* argv[])
 {
+    SDL_Window *window = NULL;
+    SDL_Renderer *renderer = NULL;
+    SDL_Event event;
+
 	if(SDL_Init(SDL_INIT_VIDEO) < 0)
 	{
 		printf("Failed video initialization: %s", SDL_GetError());
@@ -12,12 +16,28 @@ int main(int argc, char* argv[])
 
 	}
 
-	SDL_Window *window = SDL_CreateWindow("Back doing SDL :)", 820, 460, SDL_WINDOW_FULLSCREEN);
+	window = SDL_CreateWindow("Back doing SDL :)", 820, 460, 0);
 	if(!window)
 	{
 		printf("No window created");
 		return 0;
 	}
+    renderer = SDL_CreateRenderer(window, 0);
+    
+    bool quit = false;
+    while(!quit)
+    {
+        while( SDL_PollEvent(&event) != 0)
+        {
+            if(event.type == SDL_EVENT_QUIT)
+            {
+                quit = true;
+            }
+        }
+    }
+    SDL_SetRenderDrawColor(renderer,100,255,255,255);
+    SDL_RenderClear(renderer);
+    SDL_RenderPresent(renderer);
 	SDL_Delay(3000);
 	SDL_DestroyWindow(window);
 	SDL_Quit();
