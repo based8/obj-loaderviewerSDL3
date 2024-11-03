@@ -3,6 +3,12 @@
 #include <SDL_video.h>
 #include <stdio.h>
 
+void lines(SDL_Renderer *renderer)
+{
+    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+    SDL_RenderLine(renderer, 240,450,400,450);
+}
+
 int main(int argc, char* argv[])
 {
     SDL_Window *window = NULL;
@@ -22,7 +28,7 @@ int main(int argc, char* argv[])
 		printf("No window created");
 		return 0;
 	}
-    renderer = SDL_CreateRenderer(window, 0);
+    renderer = SDL_CreateRenderer(window,0);
     
     bool quit = false;
     while(!quit)
@@ -33,12 +39,15 @@ int main(int argc, char* argv[])
             {
                 quit = true;
             }
+            
+            SDL_SetRenderDrawColor(renderer,0,0,0,255);
+            SDL_RenderClear(renderer);
+            lines(renderer);   
+            SDL_RenderPresent(renderer);
+   
         }
     }
-    SDL_SetRenderDrawColor(renderer,100,255,255,255);
-    SDL_RenderClear(renderer);
-    SDL_RenderPresent(renderer);
-	SDL_Delay(3000);
+
 	SDL_DestroyWindow(window);
 	SDL_Quit();
 }
