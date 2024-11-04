@@ -4,9 +4,9 @@
 
 #define BALL_SIZE 20
 
-void *gameloop(void* pass)
+void *gameloop(void* renderer)
 {
-    SDL_Renderer* renderer = renderer;
+    printf("we in");
     // ballphys {X position, Y position, X velocity, Y velocity}
     int ballphys[4] = {200 - (BALL_SIZE/2), 200 - (BALL_SIZE/2), 1, 1};
     while(true)
@@ -41,6 +41,8 @@ int main(int argc, char* argv[])
 		return 0;
 	}
     renderer = SDL_CreateRenderer(window,0);
+    
+    SDL_interface arg = {renderer};
 
     pthread_t gameThread;    
     bool quit = false;
@@ -53,10 +55,6 @@ int main(int argc, char* argv[])
                 quit = true;
             }
             
-            SDL_SetRenderDrawColor(renderer,0,0,0,255);
-            SDL_RenderClear(renderer);
-            pthread_create(&gameThread, NULL, gameloop, renderer);
-            pthread_join(gameThread, NULL);
         }
     }
 
