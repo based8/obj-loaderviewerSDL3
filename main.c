@@ -1,12 +1,24 @@
 #include <SDL.h>
-#include <SDL_init.h>
-#include <SDL_video.h>
 #include <stdio.h>
+#include <pthread.h>
 
-void lines(SDL_Renderer *renderer)
+#define BALL_SIZE 20
+
+void *gameloop(void* pass)
 {
-    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
-    SDL_RenderLine(renderer, 240,450,400,450);
+    SDL_Renderer* renderer = renderer;
+    // ballphys {X position, Y position, X velocity, Y velocity}
+    int ballphys[4] = {200 - (BALL_SIZE/2), 200 - (BALL_SIZE/2), 1, 1};
+    while(true)
+    {
+        SDL_FRect rect = {ballphys[0], ballphys[1], BALL_SIZE, BALL_SIZE};
+        SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+        SDL_RenderRect(renderer, &rect);
+        SDL_RenderClear(renderer);
+        SDL_RenderPresent(renderer);
+        ballphys[0]++;
+        SDL_Delay(500);
+    }
 }
 
 int main(int argc, char* argv[])
@@ -22,14 +34,15 @@ int main(int argc, char* argv[])
 
 	}
 
-	window = SDL_CreateWindow("Back doing SDL :)", 820, 460, 0);
+	window = SDL_CreateWindow("Back doing SDL :)", 400, 400, 0);
 	if(!window)
 	{
 		printf("No window created");
 		return 0;
 	}
     renderer = SDL_CreateRenderer(window,0);
-    
+
+    pthread_t gameThread;    
     bool quit = false;
     while(!quit)
     {
@@ -42,9 +55,8 @@ int main(int argc, char* argv[])
             
             SDL_SetRenderDrawColor(renderer,0,0,0,255);
             SDL_RenderClear(renderer);
-            lines(renderer);   
-            SDL_RenderPresent(renderer);
-   
+            pthread_create(&gameThread, NULL, gameloop, renderer);
+            pthread_join(gameThread, NULL);
         }
     }
 
