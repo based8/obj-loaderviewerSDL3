@@ -1,5 +1,5 @@
 # SDL3-thing
-A super secret sdl thing 
+SDL windows template. 
 i cant get this hsit working on tiling wm >:ddd
 
 
