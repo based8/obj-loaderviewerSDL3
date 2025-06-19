@@ -1,4 +1,4 @@
-# SDL3-thing
+# SDL3-template
 SDL windows template. 
 i cant get this hsit working on tiling wm >:ddd
 
