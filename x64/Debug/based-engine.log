@@ -1,0 +1,6 @@
+﻿  main.cpp
+C:\Users\based\source\repos\based-engine\based-engine\main.cpp(38,18): warning C4244: 'initializing': conversion from 'Uint64' to 'double', possible loss of data
+C:\Users\based\source\repos\based-engine\based-engine\main.cpp(43,18): warning C4244: 'initializing': conversion from 'Uint64' to 'double', possible loss of data
+C:\Users\based\source\repos\based-engine\based-engine\main.cpp(48,22): warning C4244: 'initializing': conversion from 'Uint64' to 'double', possible loss of data
+C:\Users\based\source\repos\based-engine\based-engine\main.cpp(101,25): warning C4244: 'argument': conversion from 'double' to 'Uint32', possible loss of data
+  based-engine.vcxproj -> C:\Users\based\source\repos\based-engine\x64\Debug\based-engine.exe

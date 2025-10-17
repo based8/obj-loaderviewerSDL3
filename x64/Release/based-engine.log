@@ -1,0 +1,10 @@
+﻿  othographic.cpp
+  window.cpp
+C:\Users\based\source\repos\based-engine\based-engine\window.cpp(40,10): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\based\source\repos\based-engine\based-engine\window.cpp(60,16): warning C4305: '-=': truncation from 'double' to 'float'
+C:\Users\based\source\repos\based-engine\based-engine\window.cpp(64,16): warning C4305: '+=': truncation from 'double' to 'float'
+  Generating code
+  Previous IPDB not found, fall back to full compilation.
+  All 14 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  Finished generating code
+  based-engine.vcxproj -> C:\Users\based\source\repos\based-engine\x64\Release\based-engine.exe
