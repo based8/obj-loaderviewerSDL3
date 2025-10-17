@@ -1,4 +1,5 @@
-# SDL3-template
+# .obj loader/viewer for SDL3
+![Alt text](/images/spinning.gif) <br />
 SDL windows template. 
 i cant get this hsit working on tiling wm >:dddddddd
 
